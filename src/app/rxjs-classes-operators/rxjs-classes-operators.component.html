@@ -1,0 +1,12 @@
+<h1>{{ greeting$ | async }}</h1>
+<button (click)="start()">Start</button>
+<button (click)="stop()">Stop</button>
+<br><br>
+<ul>
+  <li *ngFor="let item of items">{{ item.name }} - {{ item.description }}</li>
+</ul>
+<br><br>
+<input type="text" #input />
+<p>Last key pressed: {{ lastKeyPressed }}</p>
+<br><br>
+<a routerLink="/directive-http-client">directive-http-client</a>

@@ -1,0 +1,69 @@
+<!-- student table 1 -->
+<table>
+  <thead>
+    <tr>
+      <th>Student ID</th>
+      <th>Student Name</th>
+      <th>Department</th>
+      <th>Subjects</th>
+      <th>Total Marks</th>
+      <th>Ranking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.id }}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.department }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let subject of student.subjects">
+            {{ subject.name }}: {{ subject.marks }}
+          </li>
+        </ul>
+      </td>
+      <td>{{ getTotalMarks(student) }}</td>
+      <td>{{ getRanking(student) }}</td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+
+<!-- student table 2 -->
+<table>
+  <thead>
+    <tr>
+      <th>Class ID</th>
+      <th>Class Name</th>
+      <th>Student ID</th>
+      <th>Student Name</th>
+      <th>Department</th>
+      <th>Subjects</th>
+      <th>Total Marks</th>
+      <th>Ranking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let classroom of classrooms">
+      <tr *ngFor="let student of classroom.students">
+        <td>{{ classroom.id }}</td>
+        <td>{{ classroom.name }}</td>
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.department }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let subject of student.subjects">
+              {{ subject.name }}: {{ subject.marks }}
+            </li>
+          </ul>
+        </td>
+        <td>{{ getTotalMarks_2(student) }}</td>
+        <td>{{ getRanking_2(student, classroom) }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<span><br>
+
+<a routerLink="/apiProduct-category">apiProduct-category</a>

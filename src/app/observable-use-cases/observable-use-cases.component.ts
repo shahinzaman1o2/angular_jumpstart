@@ -65,9 +65,9 @@ import { Observable, Subscription, delay } from 'rxjs';
     <a style="color: green" target="_blank"
       href="https://docs.google.com/document/d/1ROdCefaJduy7A0FTDrBVjIg_d6R5Br1o60vxs0i1Z60/edit?usp=share_link"
     >When we don't need observables, should we use it or ignore it?</a>
-    <br><br><br>
+    <br><br><br><br>
     
-    <a routerLink="/observable-with-operators">observable-with-operators</a>
+    <a routerLink="/observable-with-operators" style="font-weight: bold; font-size: larger;">observable-with-operators</a>
   `,
   styleUrls: ['./observable-use-cases.component.css']
 })
@@ -176,15 +176,6 @@ export class ObservableUseCasesComponent implements OnDestroy {
     }
   }
 
-  // because we did the unsubscribe inside of the Observable, it's not necessary to implement unsubscribe in the ngOnDestroy (executes on the component destroy)
-  // it's also a good practice to to implement unsubscribe in the ngOnDestroy to Clean up any remaining subscriptions to prevent memory leaks
-  ngOnDestroy(): void {
-    // Clean up any remaining subscriptions to prevent memory leaks
-    if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe();
-    }
-  }
-
   // Use Case - 3 & 4: Event handling & Reactive programming --> 
   // Advantage - 3: Observables can handle multiple events ---
 
@@ -214,6 +205,17 @@ export class ObservableUseCasesComponent implements OnDestroy {
   stopEvents() {
     this.eventSubscription.unsubscribe(); // cancel the eventSubscription to stop the events
     this.eventsStarted = false;
+  }
+
+  // It's a good practice to implement ngOnDestroy lifecycle method at last of the component, it'll give us the flexibility 
+  // to in the code in time of further implement & improvements of the Component. It also can be beneficial to find the method in time of coding the Component.
+  // Because we did the unsubscribe inside of the Observable, it's not necessary to implement unsubscribe in the ngOnDestroy (executes on the component destroy)
+  // It's also a good practice to to implement unsubscribe in the ngOnDestroy to Clean up any remaining subscriptions to prevent memory leaks
+  ngOnDestroy(): void {
+    // Clean up any remaining subscriptions to prevent memory leaks
+    if (this.dataSubscription) {
+      this.dataSubscription.unsubscribe();
+    }
   }
 
 }

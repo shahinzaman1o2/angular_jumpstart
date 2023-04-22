@@ -29,7 +29,7 @@ import { ReactiveFormsHttpClientService } from '../reactive-forms-http-client.se
     </form>
     <br><br><br><br>
 
-    <a routerLink="/builtin-pipes">builtin-pipes</a>
+    <a routerLink="/builtin-pipes" style="font-weight: bold; font-size: larger;">builtin-pipes</a>
   `,
   styleUrls: ['./reactive-forms-http-client.component.css']
 })

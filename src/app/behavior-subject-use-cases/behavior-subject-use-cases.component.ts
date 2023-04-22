@@ -93,9 +93,9 @@ interface Product {
       <li *ngFor="let message of messages$ | async">{{message}}</li>
     </ul>
     <input type="text" #input2 (input)="sendMessage(input2.value)">
-    <br><br><br>
+    <br><br><br><br>
 
-    <a routerLink="/directive-http-client">directive-http-client</a>
+    <a routerLink="/directive-http-client" style="font-weight: bold; font-size: larger;">directive-http-client</a>
   `,
   styleUrls: ['./behavior-subject-use-cases.component.css']
 })

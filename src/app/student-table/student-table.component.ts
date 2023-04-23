@@ -154,14 +154,6 @@ export class StudentTableComponent {
     return ranking;
   }
 
-  getTotalMarks_2(student: Student): number {
-    let totalMarks = 0;
-    for (let subject of student.subjects) {
-      totalMarks += subject.marks;
-    }
-    return totalMarks;
-  }
-
   getRanking_2(student: Student, classroom: Classroom): number {
     let totalMarks = this.getTotalMarks(student);
     let ranking = 1;

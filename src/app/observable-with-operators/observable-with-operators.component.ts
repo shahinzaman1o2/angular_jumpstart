@@ -52,7 +52,7 @@
 
 // It allows us to emit values from Observables to observers, enabling us to create powerful and flexible streams of data.
 
-// --- ** --- Manually emit values from outside or emit values from inside of an observable --- ** --->
+// Manually emit values from outside or emit values from inside of an observable ---->
 
 // We manually emit values by calling a method like `next()` outside of an observable context
 //    note: next() method is used by the observer to emit values to the observable's subscriber
@@ -63,10 +63,11 @@
 
 // ---------------------------------- pipe() method -------------------------------------
 
-// The pipe method is used to combine multiple RxJS operators into a single function, which can then be applied to an observable stream.
-// It takes an unlimited number of operator functions as arguments and returns a new function that applies those operators in sequence to an observable.
+// pipe --> pipe() is a method in RxJS that allows you to combine multiple pipeable operators into a single, composable transformation function. 
+//          It takes a sequence of operators as arguments, and returns a new function that applies those operators in sequence to an Observable. 
+//          The resulting function can be used in place of the original Observable, and any subscriptions to it will receive the transformed data stream.
 
-// --- ** --- ** --- pipeable operators --- ** --- ** --->
+// pipeable operators ---->
 
 // map, filter, tap, take, switchMap, mergeMap, concatMap, scan, reduce, and many others
 
@@ -77,10 +78,6 @@
 // They are more composable and easier to read and maintain.
 // They allow for better performance optimization, as they can apply multiple operators at once without creating intermediate Observables.
 // They are tree-shakable, meaning that unused operators can be eliminated during the build process, reducing the size of the resulting bundle.
-
-// pipe --> pipe() is a method in RxJS that allows you to combine multiple pipeable operators into a single, composable transformation function. 
-//          It takes a sequence of operators as arguments, and returns a new function that applies those operators in sequence to an Observable. 
-//          The resulting function can be used in place of the original Observable, and any subscriptions to it will receive the transformed data stream.
 
 // ------------------------------ asObservable() method ------------------------------------
 

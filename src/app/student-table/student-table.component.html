@@ -58,12 +58,20 @@
             </li>
           </ul>
         </td>
-        <td>{{ getTotalMarks_2(student) }}</td>
+        <td>{{ getTotalMarks(student) }}</td>
         <td>{{ getRanking_2(student, classroom) }}</td>
       </tr>
     </ng-container>
+
   </tbody>
 </table>
 <br>
 
 <a routerLink="/apiProduct-category" style="font-weight: bold; font-size: larger;">apiProduct-category</a>
+
+<!-- ng-template -->
+<!-- It is used to define a block of elements that are not directly rendered to the DOM. 
+Instead, they are used as a way to group and organize components and elements in the component's template. -->
+<!-- It is used as a template block that can be defined and reused throughout your application. -->
+<!-- it is mostly used to create conditional or dynamic content. 
+You can use structural directives like ngIf or ngFor to control when and how the template block is rendered. -->

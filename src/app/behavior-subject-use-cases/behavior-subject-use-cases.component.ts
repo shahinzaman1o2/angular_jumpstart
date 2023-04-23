@@ -1,3 +1,10 @@
+// BehaviorSubject is a type of Subject that always emits the most recent value to new subscribers. 
+// It stores the current value of the observable sequence, which can be accessed using the .value property.
+// It emits the current value immediately to new subscribers when they subscribe, before emitting any subsequent values.
+// BehaviorSubject can be useful in situations where you need to share state between different parts of your application,
+// and ensure that all subscribers receive the current state when they first subscribe, without having to wait for new values to be emitted.
+// However, it's important to note that the use of BehaviorSubject should be carefully considered, as it can potentially lead to unexpected behavior if used incorrectly.
+
 // Does BehaviorSubject store data?
 // Yes, BehaviorSubject stores the most recently emitted value and new subscribers will receive that value immediately upon subscription. 
 // In other words, BehaviorSubject has a concept of "current value" that is accessible through the value property, 
@@ -8,13 +15,6 @@
 // No, an Observable does not store data. It is simply a stream of data that can be subscribed to. When an Observable is created, it is just 
 // a blueprint for a stream of data. The actual data is produced by the source of the Observable, such as a user event or an HTTP request. 
 // Once the data is produced, it is emitted to all subscribers of the Observable, but it is not stored within the Observable itself.
-
-// BehaviorSubject is a type of Subject that always emits the most recent value to new subscribers. 
-// It stores the current value of the observable sequence, which can be accessed using the .value property.
-// It emits the current value immediately to new subscribers when they subscribe, before emitting any subsequent values.
-// BehaviorSubject can be useful in situations where you need to share state between different parts of your application,
-// and ensure that all subscribers receive the current state when they first subscribe, without having to wait for new values to be emitted.
-// However, it's important to note that the use of BehaviorSubject should be carefully considered, as it can potentially lead to unexpected behavior if used incorrectly.
 
 import { Component, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -208,7 +208,6 @@ export class BehaviorSubjectUseCasesComponent implements OnDestroy {
   // it's a good approach to place the `ngOnDestroy` method at the end of the component-class
   // This can help make it easier to find the method when working with larger and more complex components.
   // This can also help the method to being strict to it's position when updating the code with new Subscription additions.
-
   ngOnDestroy(): void {
     // Clean up subscriptions
     if (this.cachedDataSubscription) {

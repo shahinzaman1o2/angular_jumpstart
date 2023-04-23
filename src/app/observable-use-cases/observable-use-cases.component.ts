@@ -43,7 +43,8 @@ import { Observable, Subscription, delay } from 'rxjs';
 @Component({
   selector: 'app-observable-use-cases',
   template: `
-    <h2>Asynchronous data handling & Data transformation</h2>
+    <h1>Observable Use Cases</h1><br>
+    <h2 style="color: crimson">Asynchronous data handling & Data transformation</h2>
     <div *ngIf="isLoading">
       Loading...
     </div>
@@ -52,16 +53,16 @@ import { Observable, Subscription, delay } from 'rxjs';
     </ul>
     <button (click)="fetchData()">Fetch Data</button>
     <button (click)="cancelRequest()">Cancel Request</button>
-    <br><br>
+    <br><br><br>
 
-    <h2>Event handling & Reactive programming</h2>
+    <h2 style="color: crimson">Event handling & Reactive programming</h2>
     <button (click)="startEvents()">Start Events</button>
     <button (click)="stopEvents()" [disabled]="!eventsStarted">Stop Events</button>
     <ul>
       <li *ngFor="let event of events">{{ event }}</li>
     </ul>
 
-    <br><br>
+    <br><br><br>
     <a style="color: green" target="_blank"
       href="https://docs.google.com/document/d/1ROdCefaJduy7A0FTDrBVjIg_d6R5Br1o60vxs0i1Z60/edit?usp=share_link"
     >When we don't need observables, should we use it or ignore it?</a>

@@ -92,7 +92,7 @@ import { map, filter, take, tap, switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-observable-with-operators',
   template: `
-    <h1>{{ title }}</h1>
+    <h1 style="margin-bottom: 50px;">{{ title }}</h1>
     <!-- Subscribe to the greeting$ Observable and display the result -->
     <h3 style="color: crimson">{{ greeting$ | async }}</h3>
       

@@ -1,3 +1,13 @@
+// interface is a type of abstract data type that defines a set of methods and properties that an object must implement.
+// It specifies the public interface of an object, but does not provide any implementation details.
+// An interface is used to enforce a contract between different parts of a program, allowing them to communicate 
+//    with each other in a well-defined manner.
+
+// Note: abstract data types are used to describe data structures and their operations.
+//       Some common examples of abstract data types in programming include arrays, stacks, queues, and trees.
+//       They provide a way to encapsulate data and its associated operations, allowing them to be reused in different parts 
+//          of a program without exposing their underlying implementation details.
+//--------------------------------------------------------------------------------
 import { Component } from '@angular/core';
 
 interface Subject {
@@ -16,7 +26,7 @@ interface Student {
   name: string;
   department: string;
   subjects: Subject[];
-}
+}[]
 // interface Student {
 //   id: number;
 //   name: string;

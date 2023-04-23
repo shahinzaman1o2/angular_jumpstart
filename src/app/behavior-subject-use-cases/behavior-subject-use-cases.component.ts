@@ -37,7 +37,7 @@ interface Product {
     <h2 style="margin-bottom: 40px;">BehaviorSubject Use Cases</h2>
 
     <!-- Use Case 1: Sharing state across components -->
-    <h3  style="color: crimson">Sharing state across components --> </h3>
+    <h3 style="color: crimson">Sharing state across components --> </h3>
     <input type="text" [(ngModel)]="message">
     <button (click)="shareState()">Share State to Child</button><br><br>
     <app-child-behavior-subject-use-case-one></app-child-behavior-subject-use-case-one>

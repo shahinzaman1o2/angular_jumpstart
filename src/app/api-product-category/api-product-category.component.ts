@@ -14,7 +14,7 @@ interface Product {
   selector: 'app-api-product-category',
   template: `
     <div>
-      <h1 style="margin-bottom: 45px;">{{ title }}</h1>
+      <h1 style="margin-bottom: 55px;">{{ title }}</h1>
       <div>
         <h2>Categories: (click on the list --> )</h2>
         <ul>

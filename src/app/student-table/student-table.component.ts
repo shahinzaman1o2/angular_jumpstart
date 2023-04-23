@@ -26,7 +26,7 @@ interface Student {
   name: string;
   department: string;
   subjects: Subject[];
-}[]
+}
 // interface Student {
 //   id: number;
 //   name: string;

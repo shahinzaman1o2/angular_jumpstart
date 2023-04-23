@@ -14,8 +14,8 @@ interface Subject {
   name: string;
   marks: number;
 }
-// type : 
-//-------
+// types : 
+//--------
 // type Subject = {
 //   name: string;
 //   marks: number;
@@ -36,8 +36,8 @@ interface Student {
 //     marks: number;
 //   }[];
 // }
-// type : 
-//-------
+// types : 
+//--------
 // type Student = {
 //   id: number;
 //   name: string;
@@ -53,8 +53,8 @@ interface Classroom {
   name: string;
   students: Student[];
 }
-// type : 
-//-------
+// types : 
+//--------
 // type Classroom = {
 //   id: number;
 //   name: string;
@@ -176,7 +176,7 @@ export class StudentTableComponent {
   }
 }
 
-// Type :
+// types :
 //-----------------------
 // TypeScript's type keyword allows you to define complex types such as union types, intersection types, tuple types, and mapped types, 
 // which cannot be defined with interfaces alone.
@@ -188,7 +188,7 @@ export class StudentTableComponent {
       // type MyFunctionType = (arg1: string, arg2: number) => boolean;
 
 
-// Interface :
+// interface :
 //------------------------
 // One example is the ability to extend interfaces with additional properties or methods. This allows you to create new interfaces 
 // that inherit the properties and methods of existing interfaces, while also adding new ones.
@@ -237,8 +237,8 @@ export class StudentTableComponent {
       //            returned from APIs or user input data.
 
 
-// Developers generally use Interface instead of type because :
-//-------------------------------------------------------------
+// Developers generally use Interface instead of types because :
+//--------------------------------------------------------------
 // Interfaces are more readable and familiar: Interfaces have been around since the early days of TypeScript and are more familiar 
 // to developers coming from object-oriented programming backgrounds. As a result, interfaces are more commonly used in TypeScript code 
 // and are often easier to read and understand.

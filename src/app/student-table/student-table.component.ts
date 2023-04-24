@@ -1,6 +1,6 @@
-// interface is a type of abstract data type that defines a set of methods and properties that an object must implement.
-// It specifies the public interface of an object, but does not provide any implementation details.
-// An interface is used to enforce a contract between different parts of a program, allowing them to communicate 
+// Interface is a type of abstract data type that defines a set of methods and properties that an object must implement.
+// It specifies the public Interface of an object, but does not provide any implementation details.
+// An Interface is used to enforce a contract between different parts of a program, allowing them to communicate 
 //    with each other in a well-defined manner.
 
 // Note: abstract data types are used to describe data structures and their operations.
@@ -14,7 +14,7 @@ interface Subject {
   name: string;
   marks: number;
 }
-// types : 
+// Types : 
 //--------
 // type Subject = {
 //   name: string;
@@ -36,7 +36,7 @@ interface Student {
 //     marks: number;
 //   }[];
 // }
-// types : 
+// Types : 
 //--------
 // type Student = {
 //   id: number;
@@ -53,7 +53,7 @@ interface Classroom {
   name: string;
   students: Student[];
 }
-// types : 
+// Types : 
 //--------
 // type Classroom = {
 //   id: number;
@@ -176,10 +176,10 @@ export class StudentTableComponent {
   }
 }
 
-// types :
+// Types :
 //-----------------------
 // TypeScript's type keyword allows you to define complex types such as union types, intersection types, tuple types, and mapped types, 
-// which cannot be defined with interfaces alone.
+// which cannot be defined with Interfaces alone.
 // Here's an example of defining a union type with type:
       // type MyUnionType = string | number;
 
@@ -188,10 +188,10 @@ export class StudentTableComponent {
       // type MyFunctionType = (arg1: string, arg2: number) => boolean;
 
 
-// interface :
+// Interface :
 //------------------------
-// One example is the ability to extend interfaces with additional properties or methods. This allows you to create new interfaces 
-// that inherit the properties and methods of existing interfaces, while also adding new ones.
+// One example is the ability to extend Interfaces with additional properties or methods. This allows you to create new Interfaces 
+// that inherit the properties and methods of existing Interfaces, while also adding new ones.
       
       // interface MyInterface {
       //   name: string;
@@ -202,7 +202,7 @@ export class StudentTableComponent {
       //   gender: string;
       // }
 
-// In addition, interfaces can also be used to define optional properties or readonly properties, which cannot be defined with type aliases.
+// In addition, Interfaces can also be used to define optional properties or readonly properties, which cannot be defined with type aliases.
       
       // interface MyInterface {
       //   readonly id: number;
@@ -215,7 +215,7 @@ export class StudentTableComponent {
       //       **-> Optional properties are properties of an object that may or may not exist. They are denoted with a question mark (?) 
       //            after the property name. 
 
-// Another feature that interfaces have is the ability to define index signatures. This allows you to specify the types of properties 
+// Another feature that Interfaces have is the ability to define index signatures. This allows you to specify the types of properties 
 // that may be added dynamically to an object, based on their property names.
       
       // interface MyInterface {
@@ -237,8 +237,8 @@ export class StudentTableComponent {
       //            returned from APIs or user input data.
 
 
-// Developers generally use Interface instead of types because :
+// Developers generally use Interface instead of Types because :
 //--------------------------------------------------------------
 // Interfaces are more readable and familiar: Interfaces have been around since the early days of TypeScript and are more familiar 
-// to developers coming from object-oriented programming backgrounds. As a result, interfaces are more commonly used in TypeScript code 
+// to developers coming from object-oriented programming backgrounds. As a result, Interfaces are more commonly used in TypeScript code 
 // and are often easier to read and understand.

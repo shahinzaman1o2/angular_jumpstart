@@ -40,7 +40,7 @@ interface Product {
   styleUrls: ['./api-product-category.component.css']
 })
 export class ApiProductCategoryComponent {
-  title = 'Api Products Category using Promise (& axios)';
+  title = 'Products Category by making Asynchronous api call using : async - await - Promise (& axios)';
   categories = ['electronics', 'jewelery', "men's clothing", "women's clothing"];
   products: Product[] = [];
   selectedCategory = '';

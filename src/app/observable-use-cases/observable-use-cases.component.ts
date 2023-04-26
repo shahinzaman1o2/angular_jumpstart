@@ -108,7 +108,7 @@ export class ObservableUseCasesComponent implements OnDestroy {
       const subscription = this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos').pipe(
         delay(5000)
       ).subscribe({  // `subscription` is of type `Subscription` because it is assigned the result of calling `subscribe` method on an observable returned by the `http.get` method.
-        next: (data) => {
+        next: (data) => { // we used next: (data) ==>  to extract the data from Subscription
           // Use Case - 2: Data transformation --> 
           const transformedData = data.map((item) => item.title);
           observer.next(transformedData);
@@ -132,6 +132,7 @@ export class ObservableUseCasesComponent implements OnDestroy {
       this.isLoading = false;
       this.items = data;
     });
+
   }
   // Note: we used the Observable constructor -- new Observable((observer) => {}) -- to create an Observable that emits a stream of values, 
   //    and we use the observer to listen to those values and perform some action in response to them. 
@@ -150,7 +151,7 @@ export class ObservableUseCasesComponent implements OnDestroy {
 
   //   const data$: Observable<any[]> = this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos').pipe(
   //     delay(5000),
-  //     map(data => data.map(item => item.title)),
+  //     map(data => data.map(item => item.title)),  // we used map(data ==>  ) to extract the data from the Observable
   //     tap(() => this.isLoading = false),
   //     catchError(error => {
   //       this.isLoading = false;
@@ -159,13 +160,21 @@ export class ObservableUseCasesComponent implements OnDestroy {
   //   );
 
   //   this.dataSubscription = data$.subscribe({
-  //     next: (data) => {
+  //     next: (data) => { // we used next: (data) ==>  to extract the data from the Subscription
   //       this.items = data;
   //     },
   //     error: (error) => {
   //       console.error(error);
   //     }
   //   });
+
+  //   // or instead of above snippet, we could use --> 
+
+  //   // this.dataSubscription = data$.subscribe((data) => {
+  //   //   this.isLoading = false;
+  //   //   this.items = data;
+  //   // });
+
   // }
 
   // cancellation from the UI to visually relate to the Advantage - 2: Observables support cancellation
@@ -184,6 +193,7 @@ export class ObservableUseCasesComponent implements OnDestroy {
     const event$: Observable<number> = new Observable((observer) => {
       let count = 0;
       const intervalId = setInterval(() => {
+        // `setInterval` is a built-in JavaScript function that executes a specified function repeatedly after a specified time interval.
         observer.next(count); // emit an event with a value
         count++;
       }, 1000);

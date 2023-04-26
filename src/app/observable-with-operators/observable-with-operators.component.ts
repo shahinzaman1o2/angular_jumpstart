@@ -11,6 +11,12 @@
 //              It takes a parameter that specifies the time interval (in milliseconds) between each emission. 
 //              The first value emitted is 0, the next value is 1, then 2, and so on. The emissions continue indefinitely until unsubscribed.
 
+//              [`setInterval` is a built-in JavaScript function that executes a specified function repeatedly after a specified time interval.
+//              It does not return an observable and requires the use of clearInterval to stop the execution of the function.
+//              while both `interval` and `setInterval` can be used to execute functions repeatedly in Angular, `interval` is more powerful 
+//              and flexible due to its integration with RxJS. However, if you need a simple solution for executing a function 
+//              at a specific interval, `setInterval` is a suitable option.]
+
 // fromEvent --> It allows creating an observable from a DOM event or Node.js EventEmitter. 
 //               It takes two parameters - the source object (either a DOM element or an EventEmitter), and the name of the event to listen for. 
 //               It emits the event object whenever the specified event occurs.
@@ -86,7 +92,7 @@
 //-------- *** -------- **** -------- **** --------- **** --------- **** -------- **** -------- **** ------- **** -------- **** -------- **** -------
 
 import { Component, OnInit } from '@angular/core';
-import { Observable, interval, of, from, fromEvent, merge } from 'rxjs';
+import { Observable, interval, of, from, fromEvent, merge, Subscription } from 'rxjs';
 import { map, filter, take, tap, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -127,6 +133,10 @@ export class ObservableWithOperatorsComponent implements OnInit {
 
   lastKeyPressed!: string;
 
+  evenNumbersSubscription: Subscription | undefined;
+  mergeSubscription: Subscription | undefined;
+  buttonClickSubscription: Subscription | undefined;
+
   ngOnInit(): void {
     // Create an Observable of a greeting string
     this.greeting$ = of('Hello, RxJS!').pipe(
@@ -158,7 +168,7 @@ export class ObservableWithOperatorsComponent implements OnInit {
     );
 
     // Subscribe to the evenNumbers$ Observable and log the values
-    evenNumbers$.subscribe(num => console.log(num));
+    this.evenNumbersSubscription = evenNumbers$.subscribe(num => console.log(num));
 
     // Create an Observable from a click event on a button element
     const buttonClick$ = fromEvent(document.getElementById('myButton')!, 'click');  // non-null assertion operator `!`
@@ -167,21 +177,37 @@ export class ObservableWithOperatorsComponent implements OnInit {
     const mouseMove$ = fromEvent(document, 'mousemove');
 
     // Use the merge operator to merge the buttonClick$ and mouseMove$ Observables
-    merge(buttonClick$, mouseMove$).pipe(
+    this.mergeSubscription = merge(buttonClick$, mouseMove$).pipe(
       tap(event => console.log(`Merged event: ${event.type}`))
     ).subscribe();
 
     // Use the switchMap operator to create an Observable that emits the last key pressed
-    buttonClick$.pipe(
+    this.buttonClickSubscription = buttonClick$.pipe(
       switchMap(() => fromEvent(document, 'keydown')),
       filter(event => event.target instanceof HTMLInputElement),
       map(event => (event.target as HTMLInputElement).value),
       tap(key => console.log(`Last key pressed: ${key}`))
     ).subscribe(key => this.lastKeyPressed = key);
+
   }
 
   updateLastKeyPressed(event: KeyboardEvent): void {
     this.lastKeyPressed = event.key;
+  }
+
+  ngOnDestroy(): void {
+    // Clean up any remaining subscriptions to prevent memory leaks
+    if (this.evenNumbersSubscription) {
+      this.evenNumbersSubscription.unsubscribe();
+    }
+    if (this.mergeSubscription) {
+      this.mergeSubscription.unsubscribe();
+      // we can comment this unsubscribe to see how the mouseMove subscription works inside of the browser console 
+      // after changing the route (or destroying the component) -- which can leads the app to memory leakages.
+    }
+    if (this.buttonClickSubscription) {
+      this.buttonClickSubscription.unsubscribe();
+    }
   }
 
 }

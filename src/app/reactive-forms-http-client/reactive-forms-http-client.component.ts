@@ -20,9 +20,9 @@ import { ReactiveFormsHttpClientService } from '../reactive-forms-http-client.se
     <br><br>
 
     <!-- A form that can't be implemented without the use of Reactive Forms -->
-    <!-- Note: This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel) but can't be implemented without the use of Reactive Forms -->
+    <!-- Note: This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel) together but can't be implemented without the use of Reactive Forms -->
     <h2>A form that can't be implemented without the use of Reactive Forms --> </h2>
-    <h3 style="color: crimson; margin-bottom: 40px;">Note: This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel) but can't be implemented without the use of Reactive Forms</h3>
+    <h3 style="color: crimson; margin-bottom: 40px;">Note: This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel) together but can't be implemented without the use of Reactive Forms</h3>
     
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <input type="text" formControlName="name" placeholder="Enter your name">
@@ -31,7 +31,7 @@ import { ReactiveFormsHttpClientService } from '../reactive-forms-http-client.se
       <button type="submit" [disabled]="formGroup.invalid">Submit</button>
     </form>
 
-    <!-- This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel): -->
+    <!-- This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel) together: -->
     <!-- <form #formGroup="ngForm" (submit)="onSubmit()">
       <input type="text" [(ngModel)]="name" name="name" placeholder="Enter your name" required >
       <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required email>
@@ -51,7 +51,7 @@ export class ReactiveFormsHttpClientComponent implements OnInit {
   // A form that can't be implemented without the use of Reactive Forms --> 
   formGroup!: FormGroup;
 
-  // This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel):
+  // This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel) together:
   // name: string = '';
   // email: string = '';
   // password: string = '';
@@ -102,7 +102,7 @@ export class ReactiveFormsHttpClientComponent implements OnInit {
     }
   }
 
-  // This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel):
+  // This form can also be implemented using both Reactive Forms and Attribute Directive (ngModel) together:
   // onSubmit() {
   //   console.log('Form submitted:', {
   //     name: this.name,

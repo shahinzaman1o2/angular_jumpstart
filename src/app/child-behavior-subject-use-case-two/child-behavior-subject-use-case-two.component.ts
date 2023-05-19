@@ -2,15 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-child-behavior-subject-use-case-two',
-  template: `
-  <h3 style="color: gray; margin-top: 0%;">Child Component to Demonstrate the Use Case-2: Caching</h3>
-  <h3>Product List: [Used & Displayed from the Cached data which is resides inside of the instance of the ParentComponent stored in the browser cache (BehaviorSubjectUseCasesComponent)]</h3>
-  <ul>
-    <li *ngFor="let product of products">
-      {{ product.title }}
-    </li>
-  </ul>
-`,
+  templateUrl: './child-behavior-subject-use-case-two.component.html',
   styleUrls: ['./child-behavior-subject-use-case-two.component.css']
 })
 export class ChildBehaviorSubjectUseCaseTwoComponent {

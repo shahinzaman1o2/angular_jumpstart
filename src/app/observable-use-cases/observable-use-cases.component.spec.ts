@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ObservableUseCasesComponent } from './observable-use-cases.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ObservableUseCasesComponent', () => {
   let component: ObservableUseCasesComponent;
@@ -8,9 +9,10 @@ describe('ObservableUseCasesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ObservableUseCasesComponent ]
+      imports: [HttpClientTestingModule],
+      declarations: [ObservableUseCasesComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ObservableUseCasesComponent);
     component = fixture.componentInstance;

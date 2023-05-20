@@ -37,7 +37,7 @@
 
 import { Component, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription, delay } from 'rxjs';
+import { Observable, Subscription, delay, map } from 'rxjs';
 // import { catchError, map, tap, throwError } from 'rxjs';
 
 @Component({
@@ -48,7 +48,7 @@ import { Observable, Subscription, delay } from 'rxjs';
 export class ObservableUseCasesComponent implements OnDestroy {
   isLoading = false;
   items: string[] = [];
-  dataSubscription: Subscription | undefined;
+  dataSubscription: Subscription = new Subscription();
   // dataSubscription: Subscription;
   //--> must have a value of type `Subscription` -- can't be `undefined` or null initially -- (can't be `undefined` or null  at runtime)
   // dataSubscription!: Subscription;     [non-null assertion operator `!`]
@@ -58,7 +58,7 @@ export class ObservableUseCasesComponent implements OnDestroy {
 
   eventsStarted = false;
   events: string[] = [];
-  eventSubscription: any;
+  eventSubscription: Subscription = new Subscription();
 
   constructor(private http: HttpClient) { }
 
@@ -79,16 +79,18 @@ export class ObservableUseCasesComponent implements OnDestroy {
 
       // Send an HTTP request to fetch the data
       const subscription = this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos').pipe(
-        delay(5000)
+        delay(5000),
+        // Use Case - 2: Data transformation --> 
+        map((data) => data.map((item) => item.title))
       ).subscribe({  // `subscription` is of type `Subscription` because it is assigned the result of calling `subscribe` method on an observable returned by the `http.get` method.
         next: (data) => { // we used next: (data) ==>  to extract the data from Subscription
-          // Use Case - 2: Data transformation --> 
-          const transformedData = data.map((item) => item.title);
-          observer.next(transformedData);
+          observer.next(data);
           observer.complete();
+          this.isLoading = false; // Set isLoading to false when data is fetched
         },
         error: (err) => {
           observer.error(err);
+          this.isLoading = false; // Set isLoading to false on error as well
         }
       });
       // because of the new Observable constructor, we could create a dedicated variable `subscription` of type Subscription
@@ -102,7 +104,6 @@ export class ObservableUseCasesComponent implements OnDestroy {
 
     // Subscribe to the observable to fetch the data and update the UI
     this.dataSubscription = data$.subscribe((data) => {
-      this.isLoading = false;
       this.items = data;
     });
 

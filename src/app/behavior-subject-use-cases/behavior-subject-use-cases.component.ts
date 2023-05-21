@@ -41,17 +41,17 @@ export class BehaviorSubjectUseCasesComponent implements OnDestroy {
   message!: string;
 
   // Use Case 2: Caching
-  private cachedDataSubject: BehaviorSubject<any> = new BehaviorSubject(null);
+  public cachedDataSubject: BehaviorSubject<any> = new BehaviorSubject(null);
   public cachedData$: Observable<any>;
   private cachedDataSubscription!: Subscription;
 
   // Use Case 4: User Input
-  private inputSubject = new BehaviorSubject<string>('');
+  public inputSubject = new BehaviorSubject<string>('');
   private inputSubscription: Subscription;
   inputValue = '';
 
   // Use Case 5: Real-time Updates
-  private messagesSubject = new BehaviorSubject<string[]>([]);
+  public messagesSubject = new BehaviorSubject<string[]>([]);
   private messagesSubscription: Subscription;
   messages$: Observable<string[]>;
 

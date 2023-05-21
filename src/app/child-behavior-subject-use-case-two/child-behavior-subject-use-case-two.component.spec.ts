@@ -8,9 +8,9 @@ describe('ChildBehaviorSubjectUseCaseTwoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChildBehaviorSubjectUseCaseTwoComponent ]
+      declarations: [ChildBehaviorSubjectUseCaseTwoComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ChildBehaviorSubjectUseCaseTwoComponent);
     component = fixture.componentInstance;
@@ -19,5 +19,23 @@ describe('ChildBehaviorSubjectUseCaseTwoComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display product titles in the template', () => {
+    const products = [
+      { title: 'Product 1' },
+      { title: 'Product 2' },
+      { title: 'Product 3' }
+    ];
+
+    component.products = products;
+    fixture.detectChanges();
+
+    const productElements = fixture.nativeElement.querySelectorAll('li');
+    expect(productElements.length).toBe(products.length);
+
+    productElements.forEach((element: HTMLElement, index: number) => {
+      expect(element.textContent).toContain(products[index].title);
+    });
   });
 });

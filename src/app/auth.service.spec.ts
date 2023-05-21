@@ -13,4 +13,12 @@ describe('AuthService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should set login status', () => {
+    const status = true;
+    service.setLoginStatus(status);
+    service.getLoginStatus().subscribe((loginStatus) => {
+      expect(loginStatus).toEqual(status);
+    });
+  });
 });

@@ -1,25 +1,52 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CustomPipeComponent } from './custom-pipe.component';
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FetchJsonPipe } from '../fetch-json.pipe';
-import { HttpClientModule } from '@angular/common/http';
+// import { CustomPipeComponent } from './custom-pipe.component';
 
-describe('CustomPipeComponent', () => {
-  let component: CustomPipeComponent;
-  let fixture: ComponentFixture<CustomPipeComponent>;
+describe('FetchJsonPipe', () => {
+  let pipe: FetchJsonPipe;
+  let httpMock: HttpTestingController;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [CustomPipeComponent, FetchJsonPipe], // Declare the FetchPipe
-      imports: [HttpClientModule], // Import HttpClientModule
-    }).compileComponents();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      // declarations: [CustomPipeComponent],  --> this is ignorable
+      // declarations: [FetchJsonPipe],  --> this is ignorable
+      imports: [HttpClientTestingModule],
+      providers: [FetchJsonPipe],
+    });
 
-    fixture = TestBed.createComponent(CustomPipeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pipe = TestBed.inject(FetchJsonPipe);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  afterEach(() => {
+    httpMock.verify();
+  });
+
+  it('should create the pipe', () => {
+    expect(pipe).toBeTruthy();
+  });
+
+  it('should fetch JSON data from URL', () => {
+    const url = 'assets/heroes.json';
+    const responseData = [
+      {
+        name: 'Windstorm',
+        canFly: true
+      },
+      {
+        name: 'Bombasto',
+        canFly: false
+      }
+    ];
+
+    pipe.transform(url);
+
+    const req = httpMock.expectOne(url);
+    expect(req.request.method).toBe('GET');
+
+    req.flush(responseData);
+
+    expect(pipe['cachedData']).toEqual(responseData);
   });
 });

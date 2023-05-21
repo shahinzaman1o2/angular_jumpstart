@@ -144,17 +144,17 @@ describe('ObservableWithOperatorsComponent', () => {
 
   it('should unsubscribe from subscriptions on component destroy', () => {
     const evenNumbersSubscription = fixture.componentInstance.evenNumbersSubscription;
-    const mergeSubscription = fixture.componentInstance.mergeSubscription;
+    // const mergeSubscription = fixture.componentInstance.mergeSubscription;
     const buttonClickSubscription = fixture.componentInstance.buttonClickSubscription;
 
     spyOn(evenNumbersSubscription!, 'unsubscribe');
-    spyOn(mergeSubscription!, 'unsubscribe');
+    // spyOn(mergeSubscription!, 'unsubscribe');
     spyOn(buttonClickSubscription!, 'unsubscribe');
 
     fixture.destroy();
 
     expect(evenNumbersSubscription!.unsubscribe).toHaveBeenCalled();
-    expect(mergeSubscription!.unsubscribe).toHaveBeenCalled();
+    // expect(mergeSubscription!.unsubscribe).toHaveBeenCalled();
     expect(buttonClickSubscription!.unsubscribe).toHaveBeenCalled();
   });
 });

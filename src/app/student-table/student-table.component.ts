@@ -67,6 +67,7 @@ interface Classroom {
   styleUrls: ['./student-table.component.css']
 })
 export class StudentTableComponent {
+  // students = [
   students: Student[] = [
     {
       id: 1,
@@ -90,6 +91,7 @@ export class StudentTableComponent {
     }
   ];
 
+  // classrooms = [
   classrooms: Classroom[] = [
     {
       id: 1,
@@ -145,6 +147,7 @@ export class StudentTableComponent {
     }
   ];
 
+  // getTotalMarks(student: any): number {
   getTotalMarks(student: Student): number {
     let totalMarks = 0;
     for (let subject of student.subjects) {
@@ -153,6 +156,7 @@ export class StudentTableComponent {
     return totalMarks;
   }
 
+  // getRanking(student: any): number {
   getRanking(student: Student): number {
     let totalMarks = this.getTotalMarks(student);
     let ranking = 1;
@@ -164,6 +168,7 @@ export class StudentTableComponent {
     return ranking;
   }
 
+  // getRanking_2(student: any, classroom: any): number {
   getRanking_2(student: Student, classroom: Classroom): number {
     let totalMarks = this.getTotalMarks(student);
     let ranking = 1;
@@ -175,6 +180,13 @@ export class StudentTableComponent {
     return ranking;
   }
 }
+
+// When you assign an object literal with specific properties and values, TypeScript can infer the shape of the object and assign an appropriate type to it.
+// That's why we can avoid the need to explicitly declare types or interfaces for variables, properties & functions.
+// We have given example of each with every declarations above...
+//------- *** ------ *** ------ *** ------ *** ------ *** ------- *** ------- *** ------- *** -------- *** --------- *** -------
+
+// ******* However, declaring interface or types is always a good practice which provides additional clarity and ensure type safety in your code. *********
 
 // Types :
 //-----------------------

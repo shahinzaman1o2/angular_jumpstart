@@ -5,6 +5,7 @@ import { StudentTableComponent } from './student-table.component';
 describe('StudentTableComponent', () => {
   let component: StudentTableComponent;
   let fixture: ComponentFixture<StudentTableComponent>;
+  // declaration of fixture
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -13,6 +14,7 @@ describe('StudentTableComponent', () => {
       .compileComponents();
 
     fixture = TestBed.createComponent(StudentTableComponent);
+    // definition of fixture
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -20,6 +22,7 @@ describe('StudentTableComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  // }); --------- the above portion is created by angular cli ----------
 
   it('should calculate total marks correctly', () => {
     const student = {

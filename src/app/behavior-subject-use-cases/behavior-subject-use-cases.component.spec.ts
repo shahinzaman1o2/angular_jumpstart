@@ -39,6 +39,10 @@ describe('BehaviorSubjectUseCasesComponent', () => {
     httpMock.verify();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
   it('should share state with child component', () => {
     const message = 'Test Message';
     spyOn(stateService, 'changeState');

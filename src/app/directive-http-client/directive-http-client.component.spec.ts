@@ -40,6 +40,7 @@ describe('DirectiveHttpClientComponent', () => {
     expect(component.users).toEqual(mockUsers);
     expect(directiveHttpClientService.getUsers).toHaveBeenCalled();
   });
+  // Mocking is commonly used in unit testing to replace real dependencies with fake or controlled implementations to isolate the unit under test.
 
   it('should filter users based on the filterValue', () => {
     component.users = [

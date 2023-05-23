@@ -33,6 +33,8 @@ describe('ChildBehaviorSubjectUseCaseOneComponent', () => {
     const initialState = 'Initial State';
     expect(component.currentSate).toEqual(initialState);
     const currentStateElement = fixture.nativeElement.querySelector('p:nth-child(2)');
+    // it will return the 2nd <p> element from the related child template (child-behavior-subject-use-case-one.component.html)
+    // which means --> <p style="color: gray;">Current State ---- {{currentSate}}</p>
     expect(currentStateElement.textContent).toContain(initialState);
   });
 

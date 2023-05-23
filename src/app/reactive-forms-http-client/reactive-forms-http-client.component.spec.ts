@@ -2,9 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { ReactiveFormsHttpClientComponent } from './reactive-forms-http-client.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormsHttpClientService } from '../reactive-forms-http-client.service';
-import { User } from '../user.model';
+// import { User } from '../user.model';
 import { of } from 'rxjs';
 
 describe('ReactiveFormsHttpClientComponent', () => {
@@ -13,7 +13,8 @@ describe('ReactiveFormsHttpClientComponent', () => {
   let service: ReactiveFormsHttpClientService;
   let httpMock: HttpTestingController;
 
-  const mockUsers: User[] = [
+  // const mockUsers: User[] = [
+  const mockUsers = [
     { id: 1, name: 'John', username: 'john123', email: 'john@example.com' }
   ];
 
@@ -21,7 +22,7 @@ describe('ReactiveFormsHttpClientComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ReactiveFormsHttpClientComponent],
       imports: [HttpClientTestingModule, ReactiveFormsModule],
-      providers: [ReactiveFormsHttpClientService, FormBuilder]
+      providers: [ReactiveFormsHttpClientService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ReactiveFormsHttpClientComponent);
@@ -29,7 +30,6 @@ describe('ReactiveFormsHttpClientComponent', () => {
     service = TestBed.inject(ReactiveFormsHttpClientService);
     httpMock = TestBed.inject(HttpTestingController);
 
-    // Mock the getUsers request
     spyOn(service, 'getUsers').and.returnValue(of(mockUsers));
 
     fixture.detectChanges();

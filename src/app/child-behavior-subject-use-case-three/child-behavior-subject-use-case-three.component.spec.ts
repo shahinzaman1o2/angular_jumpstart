@@ -32,10 +32,6 @@ describe('ChildBehaviorSubjectUseCaseThreeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('should subscribe to login status changes', () => {
     const loginStatusSubject = new BehaviorSubject<boolean>(true);
     spyOn(authService, 'getLoginStatus').and.returnValue(loginStatusSubject.asObservable());

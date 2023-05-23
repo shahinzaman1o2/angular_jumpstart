@@ -1,6 +1,5 @@
 import { TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
-import { Observable, of, from, interval } from 'rxjs';
-import { tap, map, filter, take, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { ObservableWithOperatorsComponent } from './observable-with-operators.component';
 
@@ -12,9 +11,7 @@ describe('ObservableWithOperatorsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ObservableWithOperatorsComponent],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ObservableWithOperatorsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -22,6 +19,10 @@ describe('ObservableWithOperatorsComponent', () => {
 
   afterEach(() => {
     fixture.destroy();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
   it('should display the greeting message', () => {
@@ -95,7 +96,9 @@ describe('ObservableWithOperatorsComponent', () => {
     expect(itemList.length).toBe(expectedItems.length);
 
     itemList.forEach((itemElement: any, index: number) => {
-      expect(itemElement.textContent.trim()).toBe(`${expectedItems[index].name} - ${expectedItems[index].description}`);
+      expect(itemElement.textContent.trim()).
+        // The trim() method is a built-in JavaScript function that removes whitespace from both ends of a string. Whitespace includes spaces, tabs, and line breaks.
+        toBe(`${expectedItems[index].name} - ${expectedItems[index].description}`);
     });
   });
 
@@ -103,6 +106,8 @@ describe('ObservableWithOperatorsComponent', () => {
     const inputElement = fixture.debugElement.query(By.css('input')).nativeElement;
     const event = new KeyboardEvent('keydown', { key: 'A' });
     inputElement.dispatchEvent(event);
+    // The dispatchEvent() method is a built-in JavaScript function that is used to trigger an event on a DOM element. 
+    // It allows you to simulate user interactions or programmatic events within your JavaScript code.
     fixture.detectChanges();
     expect(fixture.componentInstance.lastKeyPressed).toBe('A');
   });
@@ -111,6 +116,8 @@ describe('ObservableWithOperatorsComponent', () => {
     const buttonElement = fixture.debugElement.query(By.css('#myButton')).nativeElement;
     const mouseMoveEvent = new MouseEvent('mousemove');
     const buttonClickEvent = new MouseEvent('click');
+    // ***** When we want to initialize-define & create a new instance for any declaration of variables/properties,
+    //       we have to use the `new` keyword along with the declaration *****
     const consoleSpy = spyOn(console, 'log');
 
     buttonElement.dispatchEvent(buttonClickEvent);
@@ -158,3 +165,16 @@ describe('ObservableWithOperatorsComponent', () => {
     expect(buttonClickSubscription!.unsubscribe).toHaveBeenCalled();
   });
 });
+
+// debugElement:
+//--------------
+// it provides access to the underlying DOM element and various methods for querying and interacting with the component's template.
+// Some commonly used methods available on the debugElement include --> 
+// query(By.css(selector)):  Returns the first HTML element matching the given CSS selector.
+// queryAll(By.css(selector)):  Returns an array of all HTML elements matching the given CSS selector.
+// nativeElement:  Provides direct access to the underlying DOM element associated with the debug element.
+//                 Using it we can update its attributes, modify its content, listen for events, or perform other operations as needed.
+// Keep in mind that when using the nativeElement property, you are working directly with the DOM and bypassing Angular's abstraction. 
+// It's important to exercise caution when manipulating the DOM directly, as it may not always reflect the current state of the Angular component and can lead to unexpected behavior.
+
+

@@ -46,6 +46,11 @@ describe('ObservableUseCasesComponent', () => {
     expect(component.isLoading).toBe(true);
 
     tick(5000); // Advance the virtual clock by the delay value
+    // it's a virtual clock & we can control this clock (as we've Advanced the virtual clock by the delay value using tick(5000))
+    // and now the execution will not wait for 5 sec instead it'll run immediately by advancing the clock 5 sec.
+
+    // `fakeAsync` and `tick` provides a way to write and manage asynchronous code in a synchronous style.
+    // it helps make testing asynchronous code more manageable and predictable, as you can control the timing without the need to wait for real-time delays to elapse.
 
     expect(httpClient.get).toHaveBeenCalledWith(
       'https://jsonplaceholder.typicode.com/todos'
@@ -58,6 +63,7 @@ describe('ObservableUseCasesComponent', () => {
   it('should cancel the request and reset isLoading', () => {
     component.dataSubscription = {
       unsubscribe: jasmine.createSpy('unsubscribe'),
+      // `createSpy` is used to verify that certain functions or methods have been called with the expected arguments
     } as any;
     component.isLoading = true;
 

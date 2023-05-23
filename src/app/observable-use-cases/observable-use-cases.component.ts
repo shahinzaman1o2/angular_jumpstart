@@ -56,6 +56,17 @@ export class ObservableUseCasesComponent implements OnDestroy {
   // dataSubscription: Subscription | undefined;
   //--> can have a value of type `Subscription` -- can be `undefined` or null initially -- (can't be `undefined` or null at runtime)
 
+  // dataSubscription: Subscription;
+  //--> This statement declares the variable dataSubscription of type Subscription but does not initialize it with a value. 
+  //    The variable is left uninitialized, and its value will be undefined unless assigned a value later in the code.
+  // dataSubscription: Subscription = new Subscription();
+  //--> This statement declares the variable dataSubscription of type Subscription and initializes it with a new instance of the Subscription class. 
+  //    The new Subscription() part creates a new object of the Subscription class and assigns it to the dataSubscription variable. 
+  //    The variable is now assigned a valid value and can be used immediately.
+
+  // ***** When we want to initialize-define & create a new instance for any declaration of variables/properties,
+  //       we have to use the `new` keyword along with the declaration *****
+
   eventsStarted = false;
   events: string[] = [];
   eventSubscription: Subscription = new Subscription();
@@ -76,6 +87,9 @@ export class ObservableUseCasesComponent implements OnDestroy {
       //    When you create an observable using `new Observable`, you are essentially defining a blueprint for the observable, 
       //    which specifies how the observable should behave when it is subscribed to, and how it should emit values to its subscribers.
       //    Therefore, new Observable is called the Observable constructor because it constructs new observable instances based on the blueprint defined by the Observable class.
+
+      // ***** When we want to initialize-define & create a new instance for any declaration of variables/properties,
+      //       we have to use the `new` keyword along with the declaration *****
 
       // Send an HTTP request to fetch the data
       const subscription = this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos').pipe(

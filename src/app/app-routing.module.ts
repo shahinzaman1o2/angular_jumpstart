@@ -9,9 +9,11 @@ import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { ObservableUseCasesComponent } from './observable-use-cases/observable-use-cases.component';
 import { ObservableWithOperatorsComponent } from './observable-with-operators/observable-with-operators.component';
 import { BehaviorSubjectUseCasesComponent } from './behavior-subject-use-cases/behavior-subject-use-cases.component';
+import { JsTsBuiltinFuncsComponent } from './js-ts-builtin-funcs/js-ts-builtin-funcs.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'student-table', pathMatch: 'full' },
+  { path: '', redirectTo: 'js_ts-builtin-funcs', pathMatch: 'full' },
+  { path: 'js_ts-builtin-funcs', component: JsTsBuiltinFuncsComponent },
   { path: 'student-table', component: StudentTableComponent },
   { path: 'apiProduct-category', component: ApiProductCategoryComponent },
   { path: 'observable-use-cases', component: ObservableUseCasesComponent },

@@ -20,6 +20,7 @@ import { ChildBehaviorSubjectUseCaseTwoComponent } from './child-behavior-subjec
 import { ChildBehaviorSubjectUseCaseThreeComponent } from './child-behavior-subject-use-case-three/child-behavior-subject-use-case-three.component';
 import { ChangestateService } from './changestate.service';
 import { AuthService } from './auth.service';
+import { JsTsBuiltinFuncsComponent } from './js-ts-builtin-funcs/js-ts-builtin-funcs.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthService } from './auth.service';
     BehaviorSubjectUseCasesComponent,
     ChildBehaviorSubjectUseCaseOneComponent,
     ChildBehaviorSubjectUseCaseTwoComponent,
-    ChildBehaviorSubjectUseCaseThreeComponent
+    ChildBehaviorSubjectUseCaseThreeComponent,
+    JsTsBuiltinFuncsComponent
   ],
   imports: [
     BrowserModule,

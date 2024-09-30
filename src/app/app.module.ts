@@ -21,6 +21,7 @@ import { ChildBehaviorSubjectUseCaseThreeComponent } from './child-behavior-subj
 import { ChangestateService } from './changestate.service';
 import { AuthService } from './auth.service';
 import { JsTsBuiltinFuncsComponent } from './js-ts-builtin-funcs/js-ts-builtin-funcs.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { JsTsBuiltinFuncsComponent } from './js-ts-builtin-funcs/js-ts-builtin-f
     ChildBehaviorSubjectUseCaseOneComponent,
     ChildBehaviorSubjectUseCaseTwoComponent,
     ChildBehaviorSubjectUseCaseThreeComponent,
-    JsTsBuiltinFuncsComponent
+    JsTsBuiltinFuncsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

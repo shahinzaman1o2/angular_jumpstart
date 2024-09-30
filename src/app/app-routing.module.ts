@@ -10,9 +10,11 @@ import { ObservableUseCasesComponent } from './observable-use-cases/observable-u
 import { ObservableWithOperatorsComponent } from './observable-with-operators/observable-with-operators.component';
 import { BehaviorSubjectUseCasesComponent } from './behavior-subject-use-cases/behavior-subject-use-cases.component';
 import { JsTsBuiltinFuncsComponent } from './js-ts-builtin-funcs/js-ts-builtin-funcs.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'js_ts-builtin-funcs', pathMatch: 'full' },
+  { path: '', redirectTo: 'home-page', pathMatch: 'full' },
+  { path: '', component: HomePageComponent },
   { path: 'js_ts-builtin-funcs', component: JsTsBuiltinFuncsComponent },
   { path: 'student-table', component: StudentTableComponent },
   { path: 'apiProduct-category', component: ApiProductCategoryComponent },

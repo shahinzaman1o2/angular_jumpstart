@@ -35,7 +35,7 @@
 // Observables provide a wide range of operators that allow you to transform, filter, and manipulate data streams.
 // These operators can simplify complex data transformations and make it easier to work with asynchronous data streams.
 
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -48,6 +48,7 @@ import { Todo } from '../todo.model';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './observable-use-cases.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./observable-use-cases.css']
 })
 export class ObservableUseCases implements OnDestroy {

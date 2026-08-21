@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -17,6 +17,7 @@ import { Hero } from '../hero.model';
     HeroCountPipe
   ],
   templateUrl: './custom-pipe.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./custom-pipe.css']
 })
 export class CustomPipe {

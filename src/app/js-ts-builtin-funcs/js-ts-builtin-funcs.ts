@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -13,6 +13,7 @@ interface Person {
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './js-ts-builtin-funcs.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./js-ts-builtin-funcs.css']
 })
 export class JsTsBuiltinFuncs {

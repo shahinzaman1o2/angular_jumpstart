@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ApiProductCategoryService, Product } from '../api-product-category-service';
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './api-product-category.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./api-product-category.css']
 })
 export class ApiProductCategory {

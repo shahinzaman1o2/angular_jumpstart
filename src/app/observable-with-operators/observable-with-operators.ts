@@ -86,7 +86,7 @@
 
 //-------------------------------------------------------------------------------------------
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, interval, of, from, fromEvent, merge, Subscription } from 'rxjs';
 import { map, filter, take, tap, switchMap } from 'rxjs/operators';
@@ -98,6 +98,7 @@ import { Item } from '../item.model';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './observable-with-operators.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./observable-with-operators.css']
 })
 export class ObservableWithOperators implements OnInit, OnDestroy {

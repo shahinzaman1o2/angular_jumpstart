@@ -16,7 +16,7 @@
 // a blueprint for a stream of data. The actual data is produced by the source of the Observable, such as a user event or an HTTP request. 
 // Once the data is produced, it is emitted to all subscribers of the Observable, but it is not stored within the Observable itself.
 
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -49,6 +49,7 @@ interface Product {
     ChildBehaviorSubjectUseCaseThree
   ],
   templateUrl: './behavior-subject-use-cases.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./behavior-subject-use-cases.css']
 })
 

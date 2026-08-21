@@ -45,13 +45,13 @@ describe('ApiProductCategory (Vitest)', () => {
       { id: 2, title: 'Product 2', price: 20, description: 'Description 2', category, image: 'image2.jpg' }
     ];
 
-    vi.spyOn(service, 'getProductsByCategory').mockReturnValue(of(mockProducts));
+    const spy = vi.spyOn(service, 'getProductsByCategory').mockReturnValue(of(mockProducts));
 
     component.onCategorySelected(category);
 
     const result = await firstValueFrom(component.products$);
 
     expect(result).toEqual(mockProducts);
-    expect(service.getProductsByCategory).toHaveBeenCalledWith(category);
+    expect(spy).toHaveBeenCalledWith(category);
   });
 });

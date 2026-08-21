@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../api-product-category-service';
 
@@ -7,6 +7,7 @@ import { Product } from '../api-product-category-service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './child-behavior-subject-use-case-two.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./child-behavior-subject-use-case-two.css']
 })
 export class ChildBehaviorSubjectUseCaseTwo {

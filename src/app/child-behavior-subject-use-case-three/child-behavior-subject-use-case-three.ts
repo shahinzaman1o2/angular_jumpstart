@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './child-behavior-subject-use-case-three.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./child-behavior-subject-use-case-three.css']
 })
 export class ChildBehaviorSubjectUseCaseThree implements OnDestroy {

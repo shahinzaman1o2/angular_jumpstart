@@ -3,7 +3,7 @@
 // Abstract data types (like arrays, stacks, queues, trees) describe data structures and their operations
 // while hiding implementation details for reuse and encapsulation.
 //--------------------------------------------------------------------------------
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -45,6 +45,7 @@ interface Classroom {
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './student-table.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./student-table.css']
 })
 export class StudentTable {

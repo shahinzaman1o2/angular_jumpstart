@@ -1,7 +1,7 @@
 // pipes are a feature that allows you to transform data before displaying it in the template. 
 // Pipes are essentially functions that take some input data and return transformed output data.
 //----------------------------------------------------------------------------------------------
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Observable, interval } from 'rxjs';
@@ -12,6 +12,7 @@ import { map, take } from 'rxjs/operators';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './builtin-pipes.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./builtin-pipes.css']
 })
 export class BuiltinPipes {

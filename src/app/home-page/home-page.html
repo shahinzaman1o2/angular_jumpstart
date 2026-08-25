@@ -8,25 +8,39 @@
 
   <tbody>
     <tr *ngFor="let route of routes">
-      <td *ngIf="route.path" class="routes-cell">
-        <!-- Title as plain text -->
-        <div class="route-title">
-          {{ formatTitle(route.path) }}
-        </div>
+      <ng-container *ngIf="route.path">
+        <td class="routes-cell">
+          <div class="route-title">
+            {{ formatTitle(route.path) }}
+          </div>
 
-        <!-- Description displayed as bullet points -->
-        <ul class="description-list">
-          <li *ngFor="let line of splitDescription(route.path)">
-            {{ line }}
-          </li>
-        </ul>
-      </td>
+          <div
+            *ngIf="getUseCaseLabel(route.path)"
+            class="use-case-label"
+          >
+            {{ getUseCaseLabel(route.path) }}
+          </div>
 
-      <td *ngIf="route.path" class="routes-cell">
-        <a (click)="openLinkInNewTab(route.path)" class="route-link">
-          {{ formatTitle(route.path) }}
-        </a>
-      </td>
+          <ul class="description-list">
+            <li
+              *ngFor="let line of splitDescription(route.path)"
+            >
+              {{ line }}
+            </li>
+          </ul>
+        </td>
+
+        <td class="routes-cell">
+          <a
+            [href]="'/' + route.path"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="route-link"
+          >
+            {{ formatTitle(route.path) }}
+          </a>
+        </td>
+      </ng-container>
     </tr>
   </tbody>
 </table>

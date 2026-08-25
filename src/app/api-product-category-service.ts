@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -15,7 +15,7 @@ export interface Product {
 export class ApiProductCategoryService {
   private apiUrl = 'https://fakestoreapi.com/products';
 
-  private http = inject(HttpClient);
+  constructor(private http: HttpClient) { };
 
   getProductsByCategory(category: string): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/category/${category}`);

@@ -1,13 +1,12 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { ApiProductCategoryService, Product } from '../api-product-category-service';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-api-product-category',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
   templateUrl: './api-product-category.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./api-product-category.css']
@@ -18,7 +17,7 @@ export class ApiProductCategory {
   products$!: Observable<Product[]>;
   selectedCategory = '';
 
-  private apiService = inject(ApiProductCategoryService);
+  constructor(private apiService: ApiProductCategoryService) { };
 
   onCategorySelected(category: string) {
     this.selectedCategory = category;

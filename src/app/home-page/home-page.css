@@ -28,6 +28,403 @@
 /* Route title text */
 .route-title {
   font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+}
+
+Yes. Based on the actual code/use cases you've shown, I would use these descriptions:
+
+private readonly descriptions: Record<string, string> = {
+  'js_ts-builtin-funcs': `
+    String & Array Functions
+    Math Functions
+    TypeScript Utility Types
+    Type Assertion & Type Checking
+    Type Conversion`,
+
+  'student-table': `
+    Interfaces & Type Definitions
+    Nested Data Structures
+    Array Iteration
+    Data Aggregation
+    Ranking Calculations`,
+
+  'apiProduct-category': `
+    HTTP API Requests
+    Category-Based Data Fetching
+    RxJS Observable
+    AsyncPipe
+    User Interaction & Async Data`,
+
+  'observable-use-cases': `
+    Asynchronous Data Handling
+    Data Transformation
+    Request Cancellation
+    Event Handling
+    Reactive Programming`,
+
+  'observable-with-operators': `
+    Observable Creation
+    Data Transformation
+    Filtering & Limiting
+    Event Stream Merging
+    Stream Switching
+    Event Handling`,
+
+  'behavior-subject-use-cases': `
+    Shared State Management
+    Component Communication
+    Data Caching
+    Event Bus
+    User Input Handling
+    Real-Time Updates`,
+
+  'pipes-use-cases': `
+    Built-in Pipes
+    AsyncPipe & Observable Data
+    KeyValue & Json Transformation
+    Custom File Size Pipe
+    Custom Relative Time Pipe`
+};
+Why these fit your examples
+js_ts-builtin-funcs → covers the JavaScript functions and TypeScript concepts actually demonstrated.
+student-table → emphasizes interfaces, nested arrays/objects, totals, and ranking.
+apiProduct-category → directly reflects HttpClient, Observable, AsyncPipe, and category-based API calls.
+observable-use-cases → matches your switchMap, map, takeUntil, event stream, and cancellation examples.
+observable-with-operators → covers of, from, interval, map, filter, take, tap, merge, and switchMap.
+behavior-subject-use-cases → matches all five sections in your component.
+pipes-use-cases → separates the built-in pipe demonstrations from your custom pipes.
+src/app/home-page/home-page.html:
+<table class="routes-table">
+  <thead>
+    <tr>
+      <th class="routes-header">Title</th>
+      <th class="routes-header">Link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (route of routes(); track route.path) {
+      @if (route.path) {
+        <tr>
+          <td class="routes-cell">
+            <div class="route-title">
+              {{ formatTitle(route.path) }}
+            </div>
+
+            @if (getUseCaseLabel(route.path)) {
+              <div class="use-case-label">
+                {{ getUseCaseLabel(route.path) }}
+              </div>
+            }
+
+            <ul class="description-list">
+              @for (line of splitDescription(route.path); track $index) {
+                <li>{{ line }}</li>
+              }
+            </ul>
+          </td>
+
+          <td class="routes-cell">
+            <a
+              [href]="'/' + route.path"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="route-link"
+            >
+              {{ formatTitle(route.path) }}
+            </a>
+          </td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>
+
+src/app/home-page/home-page.css:
+/* Table layout */
+
+.routes-table {
+
+  width: 100%;
+
+  margin: 20px auto;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+}
+
+/* Headers */
+
+.routes-header {
+
+  border: 2px solid crimson;
+
+  padding: 10px;
+
+  font-size: 1.5rem;
+
+  font-weight: bold;
+
+  color: crimson;
+
+  background-color: transparent;
+
+  width: 50%;
+
+}
+
+/* Cells */
+
+.routes-cell {
+
+  border: 1px solid crimson;
+
+  padding: 10px;
+
+  width: 50%;
+
+  white-space: normal;
+
+}
+
+/* Route title text */
+
+.route-title {
+
+  font-size: 1.25rem;
+
+}
+
+/* Description list */
+
+.description-list {
+
+  padding-left: 20px;
+
+  margin-top: 5px;
+
+  font-size: 0.9rem;
+
+  color: grey;
+
+}
+
+/* Links */
+
+.route-link {
+
+  font-size: 1.25rem;
+
+  color: blue;
+
+  text-decoration: underline;
+
+  cursor: pointer;
+
+}
+
+.route-link:hover {
+
+  color: crimson;
+
+}
+
+.use-case-label {
+
+  margin-top: 8px;
+
+  color: gray;
+
+}
+
+wanted the list text black & Use Cases lebels as it's (gray)...
+
+Yes. Your .description-list currently sets the list text to gray, so you only need to change that to black while keeping .use-case-label gray.
+
+Use:
+
+.description-list {
+  padding-left: 20px;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: black;
+}
+
+.use-case-label {
+  margin-top: 8px;
+  color: gray;
+}
+
+So the result will be:
+
+Route title → default/black
+Use Cases label → gray
+Description list items → black
+Link → blue
+
+If you want to make the distinction even clearer, you could use:
+
+.description-list {
+  padding-left: 20px;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.use-case-label {
+  margin-top: 8px;
+  color: #808080;
+}
+
+This is preferable if you want explicit, consistent colors.
+
+/* Table layout */
+
+.routes-table {
+
+  width: 100%;
+
+  margin: 20px auto;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+}
+
+/* Headers */
+
+.routes-header {
+
+  border: 2px solid crimson;
+
+  padding: 10px;
+
+  font-size: 1.5rem;
+
+  font-weight: bold;
+
+  color: crimson;
+
+  background-color: transparent;
+
+  width: 50%;
+
+}
+
+/* Cells */
+
+.routes-cell {
+
+  border: 1px solid crimson;
+
+  padding: 10px;
+
+  width: 50%;
+
+  white-space: normal;
+
+}
+
+/* Route title text */
+
+.route-title {
+
+  font-size: 1.25rem;
+
+}
+
+/* Description list */
+
+.description-list {
+
+  padding-left: 20px;
+
+  margin-top: 5px;
+
+  font-size: 0.9rem;
+
+  color: #000;
+
+}
+
+/* Links */
+
+.route-link {
+
+  font-size: 1.25rem;
+
+  color: blue;
+
+  text-decoration: underline;
+
+  cursor: pointer;
+
+}
+
+.route-link:hover {
+
+  color: crimson;
+
+}
+
+.use-case-label {
+
+  margin-top: 8px;
+
+  color: #808080;
+
+}
+
+maybe the text coloring could be better..
+
+Yes. #000, blue, and #808080 are quite harsh together. A softer, more consistent palette would improve readability while keeping your crimson theme.
+
+I'd suggest:
+
+/* Table layout */
+.routes-table {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* Headers */
+.routes-header {
+  border: 2px solid crimson;
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: crimson;
+  background-color: transparent;
+  width: 50%;
+}
+
+/* Cells */
+.routes-cell {
+  border: 1px solid crimson;
+  padding: 10px;
+  width: 50%;
+  white-space: normal;
+}
+
+/* Route title */
+.route-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Use Case label */
+.use-case-label {
+  margin-top: 8px;
+  color: #666;
+  font-size: 0.95rem;
+  font-style: italic;
 }
 
 /* Description list */
@@ -35,13 +432,13 @@
   padding-left: 20px;
   margin-top: 5px;
   font-size: 0.9rem;
-  color: grey;
+  color: #333;
 }
 
 /* Links */
 .route-link {
   font-size: 1.25rem;
-  color: blue;
+  color: #1565c0;
   text-decoration: underline;
   cursor: pointer;
 }

@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 interface Subject {
   name: string;
@@ -43,7 +42,7 @@ interface Classroom {
 @Component({
   selector: 'app-student-table',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
   templateUrl: './student-table.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./student-table.css']

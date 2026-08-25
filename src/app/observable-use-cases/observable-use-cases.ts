@@ -35,9 +35,8 @@
 // Observables provide a wide range of operators that allow you to transform, filter, and manipulate data streams.
 // These operators can simplify complex data transformations and make it easier to work with asynchronous data streams.
 
-import { Component, inject, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, interval, BehaviorSubject } from 'rxjs';
 import { switchMap, map, delay, takeUntil, finalize } from 'rxjs/operators';
@@ -46,7 +45,7 @@ import { Todo } from '../todo.model';
 @Component({
   selector: 'app-observable-use-cases',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
   templateUrl: './observable-use-cases.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./observable-use-cases.css']
@@ -66,9 +65,7 @@ export class ObservableUseCases implements OnDestroy {
   private eventsSubject$ = new BehaviorSubject<string[]>([]); // see the heading part of --> behavior-subject-use-cases.component.ts
   protected events$ = this.eventsSubject$.asObservable(); // bind this to template
 
-  private http = inject(HttpClient);
-
-  constructor() {
+  constructor(private http: HttpClient) {
     // Reactive fetch with cancel support
     this.items$ = this.fetchTrigger$.pipe(
       switchMap(() => {

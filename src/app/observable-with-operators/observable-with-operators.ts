@@ -90,13 +90,12 @@ import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/
 import { CommonModule } from '@angular/common';
 import { Observable, interval, of, from, fromEvent, merge, Subscription } from 'rxjs';
 import { map, filter, take, tap, switchMap } from 'rxjs/operators';
-import { RouterModule } from '@angular/router';
 import { Item } from '../item.model';
 
 @Component({
   selector: 'app-observable-with-operators',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
   templateUrl: './observable-with-operators.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./observable-with-operators.css']

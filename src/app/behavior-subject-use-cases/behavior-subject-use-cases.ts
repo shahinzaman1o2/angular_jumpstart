@@ -16,10 +16,9 @@
 // a blueprint for a stream of data. The actual data is produced by the source of the Observable, such as a user event or an HTTP request. 
 // Once the data is produced, it is emitted to all subscribers of the Observable, but it is not stored within the Observable itself.
 
-import { Component, inject, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ChildBehaviorSubjectUseCaseOne } from '../child-behavior-subject-use-case-one/child-behavior-subject-use-case-one';
 import { ChildBehaviorSubjectUseCaseTwo } from '../child-behavior-subject-use-case-two/child-behavior-subject-use-case-two';
@@ -42,7 +41,6 @@ interface Product {
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
     FormsModule,
     ChildBehaviorSubjectUseCaseOne,
     ChildBehaviorSubjectUseCaseTwo,
@@ -74,12 +72,11 @@ export class BehaviorSubjectUseCases implements OnDestroy {
   private messagesSubscription: Subscription;
   protected readonly messages$: Observable<string[]>;
 
-  // Use inject() instead of constructor injection
-  private http = inject(HttpClient);
-  private stateService = inject(ChangeStateService);
-  private authService = inject(AuthService);
-
-  constructor() {
+  constructor(
+    private http: HttpClient,
+    private stateService: ChangeStateService,
+    private authService: AuthService,
+  ) {
     // Use Case 2: Caching
     this.cachedData$ = this.cachedDataSubject.asObservable();
     // The asObservable() method is a utility method provided by RxJS that allows you to create a read-only version (Observable) of a BehaviorSubject.

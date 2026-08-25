@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -15,9 +15,7 @@ export class ChildBehaviorSubjectUseCaseThree implements OnDestroy {
   protected loggedIn = false;
   private subscription!: Subscription;
 
-  private authService = inject(AuthService);
-
-  constructor() {
+  constructor(private authService: AuthService) {
     this.subscription = this.authService.getLoginStatus().subscribe(
       status => this.loggedIn = status
     );

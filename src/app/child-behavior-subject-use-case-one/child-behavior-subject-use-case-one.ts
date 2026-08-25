@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ChangeStateService } from '../changestate-service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ export class ChildBehaviorSubjectUseCaseOne implements OnInit, OnDestroy {
   protected currentSate!: string;
   private subscription!: Subscription;
 
-  private stateService = inject(ChangeStateService);
+  constructor(private stateService: ChangeStateService) {};
 
   ngOnInit() {
     this.initializeCurrentState();

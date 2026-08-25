@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 interface Person {
   name: string;
@@ -11,7 +10,7 @@ interface Person {
 @Component({
   selector: 'app-js-ts-builtin-funcs',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
   templateUrl: './js-ts-builtin-funcs.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./js-ts-builtin-funcs.css']

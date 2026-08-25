@@ -1,0 +1,69 @@
+<div>
+  <h2>Built-in Pipes (E-Commerce Order Summary)</h2>
+
+  <div>
+    <p><strong>Order ID:</strong> {{ order.id }}</p>
+    <p><strong>Customer:</strong> {{ order.customer | titlecase }}</p>
+    <p><strong>Created:</strong> {{ order.createdAt | date:'medium' }}</p>
+    <p><strong>Total Price:</strong> {{ order.total | currency:'USD':'symbol':'1.2-2' }}</p>
+    <p><strong>Applied Discount:</strong> {{ order.discount | percent:'1.0-0' }}</p>
+  </div>
+
+  <h3>Order Metadata (KeyValuePipe & JsonPipe)</h3>
+
+  <ul>
+    <li *ngFor="let item of order.metadata | keyvalue">
+      <strong>{{ item.key | titlecase }}:</strong>
+      {{ item.value }}
+    </li>
+  </ul>
+
+  <h3>Raw Payload Preview (JsonPipe)</h3>
+
+  <pre>{{ order | json }}</pre>
+
+  <h3>AsyncPipe (Real-time Dashboard Metrics)</h3>
+
+  <div *ngIf="serverStatus$ | async as status; else loading">
+    <p>
+      <strong>Status:</strong>
+      {{ status.online ? 'Online' : 'Offline' }}
+    </p>
+
+    <p>
+      <strong>Active Users:</strong>
+      {{ status.activeUsers | number }}
+    </p>
+
+    <p>
+      <strong>Uptime:</strong>
+      {{ status.uptimeSeconds | number }} seconds
+    </p>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading real-time status...</p>
+  </ng-template>
+
+  <hr />
+
+  <h2>Custom Pipes (File Downloads & Relative Time)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>File Name</th>
+        <th>Size (FileSizePipe)</th>
+        <th>Uploaded (TimeAgoPipe)</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let file of downloads">
+        <td>{{ file.name }}</td>
+        <td>{{ file.bytes | fileSize }}</td>
+        <td>{{ file.uploadedAt | timeAgo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

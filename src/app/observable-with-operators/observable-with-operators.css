@@ -9,8 +9,3 @@ h1 {
 .subsection-spacing {
   margin-top: 35px;
 }
-
-a.router-link {
-  font-weight: bold;
-  font-size: larger;
-}

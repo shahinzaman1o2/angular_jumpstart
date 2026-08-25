@@ -1,9 +1,16 @@
+import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
 import angular from "@angular-eslint/eslint-plugin";
 import angularTemplate from "@angular-eslint/eslint-plugin-template";
 import templateParser from "@angular-eslint/template-parser";
 
-export default tseslint.config(
+export default defineConfig(
+    {
+        ignores: [
+            "cypress/**",
+            "cypress.config.ts",
+        ],
+    },
     {
         files: ["**/*.ts"],
         extends: [

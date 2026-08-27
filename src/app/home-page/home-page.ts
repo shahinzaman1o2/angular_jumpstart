@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterLink], // Provides common directives and pipes
+  imports: [RouterLink, CommonModule], // Provides common directives and pipes
   templateUrl: './home-page.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./home-page.css']
